@@ -45,3 +45,4 @@ def test_boolean_age_rejected(value):  # CIN-ENT-TC-010
         can_watch(value)
 
 #Test 2
+#Test 3
