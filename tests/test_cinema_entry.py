@@ -43,5 +43,3 @@ def test_none_age_rejected():  # CIN-ENT-TC-009
 def test_boolean_age_rejected(value):  # CIN-ENT-TC-010
     with pytest.raises(TypeError):
         can_watch(value)
-
-#Test 2
