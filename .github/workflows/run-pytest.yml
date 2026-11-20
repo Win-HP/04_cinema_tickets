@@ -2,16 +2,34 @@ name: Run pytest
 
 on:
   push:
+    branches:
+      - main
+    paths:
+      - "**.py"
+      - "pytest.ini"
+      - ".github/workflows/run-pytest.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**.py"
+      - "pytest.ini"
+      - ".github/workflows/run-pytest.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
